@@ -7,6 +7,7 @@ import com.fifty.chromanotes.feature_note.data.repository.NoteRepositoryImpl
 import com.fifty.chromanotes.feature_note.domain.repository.NoteRepository
 import com.fifty.chromanotes.feature_note.domain.usecase.AddNoteUseCase
 import com.fifty.chromanotes.feature_note.domain.usecase.DeleteNoteUseCase
+import com.fifty.chromanotes.feature_note.domain.usecase.GetNoteUseCase
 import com.fifty.chromanotes.feature_note.domain.usecase.GetNotesUseCase
 import com.fifty.chromanotes.feature_note.domain.usecase.NoteUseCases
 import dagger.Module
@@ -39,6 +40,7 @@ object AppModule {
         NoteUseCases(
             getNotes = GetNotesUseCase(repository),
             deleteNote = DeleteNoteUseCase(repository),
-            addNote = AddNoteUseCase(repository)
+            addNote = AddNoteUseCase(repository),
+            getNote = GetNoteUseCase(repository)
         )
 }
