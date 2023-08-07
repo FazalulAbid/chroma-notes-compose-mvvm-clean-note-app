@@ -13,6 +13,7 @@ import com.fifty.chromanotes.feature_note.domain.usecase.NoteUseCases
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -22,7 +23,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideNoteDatabase(app: Application) =
+    fun provideNoteDatabase(app: Application): NoteDatabase =
         Room.databaseBuilder(
             app,
             NoteDatabase::class.java,
@@ -31,7 +32,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideNoteRepository(db: NoteDatabase) =
+    fun provideNoteRepository(db: NoteDatabase): NoteRepository =
         NoteRepositoryImpl(db.noteDao)
 
     @Provides

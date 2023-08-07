@@ -40,6 +40,7 @@ import androidx.navigation.NavController
 import com.fifty.chromanotes.R
 import com.fifty.chromanotes.feature_note.presentation.notes.components.NoteItem
 import com.fifty.chromanotes.feature_note.presentation.notes.components.OrderSection
+import com.fifty.chromanotes.feature_note.presentation.util.Screen
 import com.fifty.chromanotes.ui.theme.SizeMedium
 import kotlinx.coroutines.launch
 
@@ -59,7 +60,9 @@ fun NotesScreen(
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(
-                onClick = {},
+                onClick = {
+                    navController.navigate(Screen.AddEditNoteScreen.route)
+                },
                 containerColor = MaterialTheme.colorScheme.primary
             ) {
                 Icon(
@@ -117,7 +120,12 @@ fun NotesScreen(
                         note = note,
                         modifier = Modifier
                             .fillMaxWidth()
-                            .clickable { },
+                            .clickable {
+                                navController.navigate(
+                                    Screen.AddEditNoteScreen.route +
+                                            "?noteId=${note.id}&noteColor=${note.color}"
+                                )
+                            },
                         onDeleteClick = {
                             viewModel.onEvent(NotesEvent.DeleteNote(note))
                             scope.launch {
