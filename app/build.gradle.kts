@@ -92,6 +92,9 @@ dependencies {
 
     // Kotlin Extensions and Coroutines support for Room
     implementation("androidx.room:room-ktx:$room_version")
+
+    // Splash Screen
+    implementation("androidx.core:core-splashscreen:1.0.0")
 }
 
 // Allow references to generated code

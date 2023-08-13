@@ -35,6 +35,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.fifty.chromanotes.R
@@ -67,7 +68,8 @@ fun NotesScreen(
             ) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_add_note),
-                    contentDescription = stringResource(R.string.add_note)
+                    contentDescription = stringResource(R.string.add_note),
+                    tint = MaterialTheme.colorScheme.background
                 )
             }
         },
@@ -85,7 +87,9 @@ fun NotesScreen(
             ) {
                 Text(
                     text = stringResource(R.string.your_notes),
-                    style = MaterialTheme.typography.headlineMedium
+                    style = MaterialTheme.typography.headlineSmall.copy(
+                        fontWeight = FontWeight.SemiBold
+                    )
                 )
                 IconButton(
                     onClick = {
